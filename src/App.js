@@ -1,6 +1,6 @@
 import { react, useState, useEffect, createRef } from "react";
 import styled from "styled-components";
-import { Box, TextField, Button } from "@material-ui/core";
+import { Box, TextField, Button, Input } from "@material-ui/core";
 import BussinessCard from "./BusinessCard";
 import { PDFViewer, PDFDownloadLink } from "@react-pdf/renderer";
 
@@ -16,7 +16,7 @@ const CustomBox = styled(Box)`
 `;
 
 const App = () => {
-  const title = "명함 생성기 예제";
+  const title = "명함 생성기";
   const [inputs, setInputs] = useState({
     name: "",
     title: "",
@@ -95,6 +95,7 @@ const App = () => {
         />
       </PDFViewer>
       <input
+        style={{ width: "75px", height: "30px", marginTop: "10px" }}
         type="file"
         accept="image/*"
         ref={fileInput}
@@ -130,7 +131,7 @@ const App = () => {
               address={address}
             />
           }
-          fileName="somename.pdf"
+          fileName="Businesscard.pdf"
         >
           {({ blob, url, loading, error }) =>
             loading ? "Loading document..." : "Download now!"
